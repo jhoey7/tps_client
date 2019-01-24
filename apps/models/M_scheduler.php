@@ -259,7 +259,7 @@ class M_scheduler extends CI_Model {
 	function read_permit($type="") {
 		if($type=="sppb"){
 			$SQL = "SELECT A.ID, A.STR_DATA
-					FROM t_mailbox A
+					FROM mailbox A
 					WHERE A.STATUS = 'UNREAD'
 					AND KD_APRF = 'GETIMPPERMIT'
 					AND DOKUMEN = 'SPPB'
