@@ -224,4 +224,26 @@ if(!function_exists('date_input')){
 	}
 }
 
+if(!function_exists('escape')){	
+	function escape($text,$type){
+		if(!empty($text)){
+			if($type == "DATESLASH"){
+				$arrdate = explode("/",$text);
+				$text = $arrdate[2]."-".$arrdate[1]."-".$arrdate[0];
+			}else if($type == "DATESLASHS"){
+				$arrdate = explode("/",$text);
+				$text = $arrdate[2]."-".$arrdate[0]."-".$arrdate[1];
+			}else if($type == "DATEDASH"){
+				$text = substr($text,0,4)."-".substr($text,4,2)."-".substr($text,6,2);
+			}else if($type == "STRING"){
+				$text = "";
+			}
+			$result = trim(strtoupper($text));
+		}else{
+			$result = null;
+		}
+		return $result;
+	}
+}
+
 ?>
