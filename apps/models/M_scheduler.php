@@ -20,7 +20,7 @@ class M_scheduler extends CI_Model {
 						WHERE ID IN (
 							SELECT distinct ID 
 							FROM t_cocostskms 
-							WHERE FL_TRANSFER_".$type." = '100' AND WK_".$type." IS NOT NULL
+							WHERE FL_TRANSFER_".$type." = '100' AND WK_".strtoupper($type)." IS NOT NULL
 						) limit 0,1";
 		$result = $this->db->query($queryHeader);
 		$arrayData = $result->result_array();
@@ -466,7 +466,7 @@ class M_scheduler extends CI_Model {
 										}
 									}else{
 										$detailkms['ID'] = $ID;
-										$detailkms['CAR'] = escape($arrdetailkms['jns_dok']);
+										$detailkms['CAR'] = escape($arrdetailkms['car']);
 										$detailkms['JNS_KMS'] = escape($arrdetailkms['jns_kms']);
 										$detailkms['MERK_KMS'] = escape($arrdetailkms['merk_kms']);
 										$detailkms['JML_KMS'] = escape($arrdetailkms['jml_kms']);
@@ -475,13 +475,13 @@ class M_scheduler extends CI_Model {
 									}
 								}
 								$this->db->where(array('ID' => $value['ID']));
-								$this->db->update('t_mailbox', array('STATUS' => 'READ', 'TGL_STATUS' => $date_now));
+								$this->db->update('mailbox', array('STATUS' => 'READ', 'TGL_STATUS' => $date_now));
 								echo "Success\n";
 							}
 						}
 					}else{
 						$this->db->where(array('ID' => $value['ID']));
-						$this->db->update('t_mailbox', array('STATUS' => 'READ', 'TGL_STATUS' => $date_now));
+						$this->db->update('mailbox', array('STATUS' => 'READ', 'TGL_STATUS' => $date_now));
 						echo "Success\n";
 					}
 				}
