@@ -245,7 +245,7 @@ class M_scheduler extends CI_Model {
 						$response = $client->call($method,$param);
 						if(count($response) > 0){
 							$resData = $response[$method.'Result'];
-							$this->db->insert('mailbox',array('KD_APRF' => 'GETIMPORSPPB', 'DOKUMEN' => 'SPPB', 'STR_DATA' => $resData, 'STATUS' => 'UNREAD', 'TGL_STATUS' => date('Y-m-d H:i:s')));
+							$this->db->insert('mailbox',array('KD_APRF' => 'GETIMPPERMIT', 'DOKUMEN' => 'SPPB', 'STR_DATA' => $resData, 'STATUS' => 'UNREAD', 'TGL_STATUS' => date('Y-m-d H:i:s')));
 						}
 					}
 				}
@@ -261,7 +261,7 @@ class M_scheduler extends CI_Model {
 			$SQL = "SELECT A.ID, A.STR_DATA
 					FROM t_mailbox A
 					WHERE A.STATUS = 'UNREAD'
-					AND KD_APRF = 'GETIMPORPERMIT'
+					AND KD_APRF = 'GETIMPPERMIT'
 					AND DOKUMEN = 'SPPB'
 					LIMIT 35";
 			#echo $SQL; die();
